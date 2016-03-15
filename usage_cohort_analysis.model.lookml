@@ -23,7 +23,7 @@
     - join: products_dim
       relationship: many_to_one 
       sql_on: collab_usage_summary.productkey = products_dim.productkey
-
+      
 - explore: customers_dim
 
 - explore: products_dim
