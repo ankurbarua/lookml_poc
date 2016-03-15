@@ -1,4 +1,4 @@
-- connection: persist_redshift
+- connection: z_looker_redshift
 
 - include: "*.view.lookml"       # include all the views
 - include: "*.dashboard.lookml"  # include all the dashboards
@@ -23,6 +23,15 @@
     - join: products_dim
       relationship: many_to_one 
       sql_on: collab_usage_summary.productkey = products_dim.productkey
+      
+- explore: revenue_usage_derived_fact
+  joins:
+    - join: customers_dim
+      relationship: many_to_one
+      sql_on: revenue_usage_derived_fact.customerkey = customers_dim.customerkey
+    - join: products_dim
+      relationship: many_to_one 
+      sql_on: revenue_usage_derived_fact.productkey = products_dim.productkey
       
 - explore: customers_dim
 

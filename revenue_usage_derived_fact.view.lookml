@@ -4,7 +4,8 @@
     sql: |
       select a.customerkey, a.productkey, a.reporting_month, b.session_date, a.monthly_base_revenue, a.base_unit, a.base_quantity, a.base_unit_price, a.total_unit_amount, b.session_count, b.screen_sharing_mins, b.pstn_mins, b.video_mins, b.video_participant_count, b.voip_mins from z_looker.base_estimated_revenue_fact a, z_looker.collab_usage_summary b where a.customerkey = b.customerkey and a.productkey = b.product_key and a.reporting_month = b.session_date
     sql_trigger_value: SELECT CURDATE()
-    distribution: [customerkey]
+    distribution: "customerkey"
+    indexes: [customerkey, productkey]
 
   fields:
   - measure: count
