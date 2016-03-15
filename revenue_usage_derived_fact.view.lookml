@@ -4,6 +4,7 @@
     sql: |
       select a.customerkey, a.productkey, a.reporting_month, b.session_date, a.monthly_base_revenue, a.base_unit, a.base_quantity, a.base_unit_price, a.total_unit_amount, b.session_count, b.screen_sharing_mins, b.pstn_mins, b.video_mins, b.video_participant_count, b.voip_mins from z_looker.base_estimated_revenue_fact a, z_looker.collab_usage_summary b where a.customerkey = b.customerkey and a.productkey = b.product_key and a.reporting_month = b.session_date
     sql_trigger_value: SELECT CURDATE()
+    distribution: [customerkey]
 
   fields:
   - measure: count
@@ -28,54 +29,54 @@
     timeframes: [time, date, week, month]
     sql: ${TABLE}.session_date
 
-  - dimension: monthly_base_revenue
-    type: number
+  - measure: monthly_base_revenue
+    type: sum
     decimals: 2
     sql: ${TABLE}.monthly_base_revenue
 
-  - dimension: base_unit
-    type: string
+  - measure: base_unit
+    type: sum
     sql: ${TABLE}.base_unit
 
-  - dimension: base_quantity
-    type: int
+  - measure: base_quantity
+    type: sum
     sql: ${TABLE}.base_quantity
 
-  - dimension: base_unit_price
-    type: number
+  - measure: base_unit_price
+    type: sum
     decimals: 2
     sql: ${TABLE}.base_unit_price
 
-  - dimension: total_unit_amount
-    type: number
+  - measure: total_unit_amount
+    type: sum
     decimals: 2
     sql: ${TABLE}.total_unit_amount
 
-  - dimension: session_count
-    type: int
+  - measure: session_count
+    type: sum
     sql: ${TABLE}.session_count
 
-  - dimension: screen_sharing_mins
-    type: number
+  - measure: screen_sharing_mins
+    type: sum
     decimals: 2
     sql: ${TABLE}.screen_sharing_mins
 
-  - dimension: pstn_mins
-    type: number
+  - measure: pstn_mins
+    type: sum
     decimals: 2
     sql: ${TABLE}.pstn_mins
 
-  - dimension: video_mins
-    type: number
+  - measure: video_mins
+    type: sum
     decimals: 2
     sql: ${TABLE}.video_mins
 
-  - dimension: video_participant_count
-    type: int
+  - measure: video_participant_count
+    type: sum
     sql: ${TABLE}.video_participant_count
 
-  - dimension: voip_mins
-    type: number
+  - measure: voip_mins
+    type: sum
     decimals: 2
     sql: ${TABLE}.voip_mins
 
