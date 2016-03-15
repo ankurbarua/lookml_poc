@@ -26,5 +26,5 @@
 
 - explore: customers_dim
 
-- explore: products_dim
+- explore: products_dim #Commented by TK
 
