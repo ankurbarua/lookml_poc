@@ -8,7 +8,7 @@
       (select customerkey, product_key,  date_trunc('month', session_date) session_date, sum(session_count) session_count, sum(screen_sharing_mins) 
       screen_sharing_mins, sum(pstn_mins) pstn_mins, sum(video_mins) video_mins, sum(video_participant_count) 
       video_participant_count, sum(voip_mins) voip_mins from z_looker.collab_usage_summary group by customerkey, 
-      product_key, session_date) b where a.customerkey = b.customerkey and a.productkey = b.product_key and 
+      product_key, date_trunc('month', session_date)) b where a.customerkey = b.customerkey and a.productkey = b.product_key and 
       a.reporting_month = b.session_date
     sql_trigger_value: SELECT CURDATE()
     distribution: "customerkey"
