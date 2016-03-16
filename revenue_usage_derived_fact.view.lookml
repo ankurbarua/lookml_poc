@@ -32,11 +32,6 @@
     timeframes: [time, date, week, month]
     sql: ${TABLE}.reporting_month
 
-  - dimension_group: session_date
-    type: time
-    timeframes: [time, date, week, month]
-    sql: ${TABLE}.session_date
-
   - measure: monthly_base_revenue
     type: sum
     decimals: 2
