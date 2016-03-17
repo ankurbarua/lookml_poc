@@ -1,4 +1,4 @@
-- view: customers_dim
+- view: customer
   sql_table_name: z_looker.customers_dim
   fields:
 
@@ -10,6 +10,7 @@
   - dimension: auto_invoice_flag
     type: int
     sql: ${TABLE}.auto_invoice_flag
+    hidden: true
 
   - dimension: billing_address1
     type: string
@@ -52,7 +53,7 @@
     sql: ${TABLE}.billing_email_address
 
   - dimension: billing_postal_code
-    type: string
+    type: zipcode
     sql: ${TABLE}.billing_postal_code
 
   - dimension: billing_state_code
@@ -144,6 +145,7 @@
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.etljobtimestamp
+    hidden: true
 
   - dimension: fax_number
     type: string
@@ -169,19 +171,23 @@
   - dimension: key_customer_flag
     type: int
     sql: ${TABLE}.key_customer_flag
+    hidden: true
 
   - dimension_group: migration_datetime
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.migration_datetime
+    hidden: true
 
   - dimension: nativecustomerkey
     type: number
     sql: ${TABLE}.nativecustomerkey
+    hidden: true
 
   - dimension: new_nativecustomerkey
     type: number
     sql: ${TABLE}.new_nativecustomerkey
+    hidden: true
 
   - dimension: parent_customer_key
     type: number

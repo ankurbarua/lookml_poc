@@ -1,4 +1,4 @@
-- view: products_dim
+- view: product
   sql_table_name: z_looker.products_dim
   fields:
 
