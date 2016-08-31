@@ -5,7 +5,6 @@
       select a.customerkey, a.productkey, a.reporting_month, a.monthly_base_revenue, a.base_unit, a.base_quantity, 
       a.base_unit_price, a.total_unit_amount, b.session_count, b.screen_sharing_mins, b.pstn_mins, b.video_mins,
       b.video_participant_count, b.voip_mins 
-      
       from z_looker.base_estimated_revenue_fact a 
       left outer join 
         (select customerkey, product_key,  date_trunc('month', session_date) session_date, sum(session_count) session_count, sum(screen_sharing_mins) 
