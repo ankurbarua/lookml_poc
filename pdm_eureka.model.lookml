@@ -5,7 +5,7 @@
 
 
 - explore: customer_provisioning_fact
-  label: 'Customer Provisioning'
+  label: 'Customer Provisioning Data' 
   joins:
     - join: gtm_acct_attributes
       relationship: many_to_one
